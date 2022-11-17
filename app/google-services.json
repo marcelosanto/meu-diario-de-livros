@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "274171996424",
+    "project_id": "booktrackerapp-5b926",
+    "storage_bucket": "booktrackerapp-5b926.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274171996424:android:0d6ea809f963a5273d64bd",
+        "android_client_info": {
+          "package_name": "com.example.livrosqueli"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274171996424-6n4ie143f9acf5vofso43p6g61jmef65.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7dpUaJKrQvu8GrNiR8fw_J8SV6yO4oDo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "274171996424-6n4ie143f9acf5vofso43p6g61jmef65.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
