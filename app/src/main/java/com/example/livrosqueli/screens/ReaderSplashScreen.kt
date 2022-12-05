@@ -18,6 +18,7 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.livrosqueli.components.ReaderLogo
 import com.example.livrosqueli.navigation.ReaderScreens
 import kotlinx.coroutines.delay
 
@@ -34,7 +35,7 @@ fun ReaderSplashScreen(navController: NavController) {
         }))
 
         delay(2000L)
-        
+
         navController.navigate(ReaderScreens.LoginScreen.name)
     }
 
@@ -53,11 +54,7 @@ fun ReaderSplashScreen(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Text(
-                "A. Reader",
-                style = MaterialTheme.typography.h3,
-                color = Color.Red.copy(alpha = 0.5f)
-            )
+            ReaderLogo()
             Spacer(modifier = Modifier.height(15.dp))
             Text(
                 text = "\"Read. Change. Yourself \"",
