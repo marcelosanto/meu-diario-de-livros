@@ -3,8 +3,15 @@ package com.example.livrosqueli
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.example.livrosqueli.screens.main.ReaderMainScreen
-import com.example.livrosqueli.screens.main.ReaderMainViewModel
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import com.example.livrosqueli.navigation.ReaderNavigation
 import com.example.livrosqueli.ui.theme.LivrosQueLiTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -14,11 +21,24 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             LivrosQueLiTheme {
-                ReaderMainScreen(mainViewModel = ReaderMainViewModel(), applicationContext)
-
-
+                ReaderApp()
             }
         }
     }
 }
 
+@Composable
+fun ReaderApp() {
+    Surface(
+        color = MaterialTheme.colors.background,
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            ReaderNavigation()
+        }
+    }
+}
