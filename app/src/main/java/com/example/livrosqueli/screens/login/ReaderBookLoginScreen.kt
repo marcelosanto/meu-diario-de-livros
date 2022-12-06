@@ -28,6 +28,7 @@ import com.example.livrosqueli.R
 import com.example.livrosqueli.components.EmailInput
 import com.example.livrosqueli.components.PasswordInput
 import com.example.livrosqueli.components.ReaderLogo
+import com.example.livrosqueli.navigation.ReaderScreens
 
 @Composable
 fun ReaderBookLoginScreen(
@@ -44,7 +45,9 @@ fun ReaderBookLoginScreen(
             ReaderLogo()
             if (showLoginForm.value) {
                 UserForm(loading = false) { email, password ->
-                    viewModel.signInWithEmailAndPassword(email, password)
+                    viewModel.signInWithEmailAndPassword(email, password) {
+                        navController.navigate(ReaderScreens.ReaderHomeScreen.name)
+                    }
                 }
             } else {
                 UserForm(loading = false, isCreateAccount = true) { email, password ->
