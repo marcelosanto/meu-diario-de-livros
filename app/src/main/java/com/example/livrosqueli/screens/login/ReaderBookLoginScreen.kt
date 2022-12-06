@@ -51,7 +51,9 @@ fun ReaderBookLoginScreen(
                 }
             } else {
                 UserForm(loading = false, isCreateAccount = true) { email, password ->
-
+                    viewModel.createUserWithEmailAndPassword(email, password) {
+                        navController.navigate(ReaderScreens.ReaderHomeScreen.name)
+                    }
                 }
             }
         }
