@@ -23,16 +23,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
 import com.example.livrosqueli.R
 import com.example.livrosqueli.components.EmailInput
 import com.example.livrosqueli.components.PasswordInput
 import com.example.livrosqueli.components.ReaderLogo
-import com.example.livrosqueli.navigation.ReaderScreens
 
 @Composable
 fun ReaderBookLoginScreen(
-    navController: NavController,
+    onNavigateToBookHomeScreen: () -> Unit,
     viewModel: LoginScreenViewModel = viewModel()
 ) {
     val showLoginForm = rememberSaveable { mutableStateOf(true) }
@@ -46,13 +44,13 @@ fun ReaderBookLoginScreen(
             if (showLoginForm.value) {
                 UserForm(loading = false) { email, password ->
                     viewModel.signInWithEmailAndPassword(email, password) {
-                        navController.navigate(ReaderScreens.ReaderHomeScreen.name)
+                        onNavigateToBookHomeScreen()
                     }
                 }
             } else {
                 UserForm(loading = false, isCreateAccount = true) { email, password ->
                     viewModel.createUserWithEmailAndPassword(email, password) {
-                        navController.navigate(ReaderScreens.ReaderHomeScreen.name)
+                        onNavigateToBookHomeScreen()
                     }
                 }
             }
@@ -79,8 +77,8 @@ fun ReaderBookLoginScreen(
     }
 }
 
-@Preview
 @OptIn(ExperimentalComposeUiApi::class)
+@Preview
 @Composable
 fun UserForm(
     loading: Boolean = false,

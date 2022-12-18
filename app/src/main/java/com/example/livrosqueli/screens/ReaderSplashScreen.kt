@@ -17,14 +17,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import com.example.livrosqueli.components.ReaderLogo
-import com.example.livrosqueli.navigation.ReaderScreens
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.delay
 
 @Composable
-fun ReaderSplashScreen(navController: NavController) {
+fun ReaderSplashScreen(
+    onNavigateToLoginScreen: () -> Unit,
+    onNavigateToBookHomeScreen: () -> Unit
+) {
 
     val scale = remember {
         Animatable(0f)
@@ -38,9 +39,8 @@ fun ReaderSplashScreen(navController: NavController) {
         delay(2000L)
 
         if (FirebaseAuth.getInstance().currentUser?.email.isNullOrEmpty()) {
-            navController.navigate(ReaderScreens.LoginScreen.name)
-        } else navController.navigate(ReaderScreens.ReaderHomeScreen.name)
-        //navController.navigate(ReaderScreens.LoginScreen.name)
+            onNavigateToLoginScreen()
+        } else onNavigateToBookHomeScreen()
 
     }
 

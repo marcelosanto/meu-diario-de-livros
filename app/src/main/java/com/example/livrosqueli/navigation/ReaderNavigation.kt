@@ -11,13 +11,22 @@ import com.example.livrosqueli.screens.login.ReaderBookLoginScreen
 @Composable
 fun ReaderNavigation() {
     val navController = rememberNavController()
+
     NavHost(navController = navController, startDestination = ReaderScreens.SplashScreen.name) {
         composable(ReaderScreens.SplashScreen.name) {
-            ReaderSplashScreen(navController = navController)
+            ReaderSplashScreen(
+                onNavigateToLoginScreen = {
+                    navController.navigate(ReaderScreens.LoginScreen.name)
+                },
+                onNavigateToBookHomeScreen = {
+                    navController.navigate(ReaderScreens.ReaderHomeScreen.name)
+                })
         }
 
         composable(ReaderScreens.LoginScreen.name) {
-            ReaderBookLoginScreen(navController = navController)
+            ReaderBookLoginScreen(onNavigateToBookHomeScreen = {
+                navController.navigate(ReaderScreens.ReaderHomeScreen.name)
+            })
         }
 
         composable(ReaderScreens.ReaderHomeScreen.name) {
