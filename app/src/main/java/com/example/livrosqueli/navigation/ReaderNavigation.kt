@@ -30,7 +30,9 @@ fun ReaderNavigation() {
         }
 
         composable(ReaderScreens.ReaderHomeScreen.name) {
-            ReaderBookHomeScreen(navController = navController)
+            ReaderBookHomeScreen {
+                navController.navigate(ReaderScreens.LoginScreen.name)
+            }
         }
 
     }
