@@ -59,7 +59,7 @@ fun ReaderBookLoginScreen(
         Spacer(modifier = Modifier.height(15.dp))
 
         Row(
-            modifier = Modifier.padding(15.dp),
+            modifier = Modifier.padding(16.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
