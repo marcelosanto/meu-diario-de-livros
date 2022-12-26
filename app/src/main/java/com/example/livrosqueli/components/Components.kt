@@ -9,6 +9,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Logout
+import androidx.compose.material.icons.filled.StarBorder
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
@@ -197,5 +198,28 @@ fun FABContent(onTap: () -> Unit) {
             contentDescription = "Add a book",
             tint = Color.White
         )
+    }
+}
+
+@Composable
+fun BookRating(score: Double) {
+    Surface(
+        modifier = Modifier
+            .height(70.dp)
+            .padding(4.dp),
+        shape = RoundedCornerShape(56.dp),
+        elevation = 6.dp,
+        color = Color.White
+    ) {
+        Column(
+            modifier = Modifier.padding(4.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Icon(
+                imageVector = Icons.Filled.StarBorder, contentDescription = "Star icon",
+                modifier = Modifier.padding(3.dp)
+            )
+            Text(text = "3.5", style = MaterialTheme.typography.subtitle1)
+        }
     }
 }
