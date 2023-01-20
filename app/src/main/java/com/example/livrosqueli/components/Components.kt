@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
@@ -138,8 +139,10 @@ fun PasswordVisibility(passwordVisibility: MutableState<Boolean>) {
 @Composable
 fun ReaderAppBar(
     title: String,
+    icon: ImageVector? = null,
     showProfile: Boolean = true,
-    onNavigateToLoginScreen: () -> Unit
+    onNavigateToScreen: () -> Unit = {},
+    onBackArrowClicked: () -> Unit = {}
 ) {
     TopAppBar(
         title = {
@@ -153,6 +156,13 @@ fun ReaderAppBar(
                             .scale(0.7f)
                     )
                 }
+                if (icon != null) {
+                    Icon(
+                        imageVector = icon,
+                        contentDescription = "arrow back",
+                        tint = Color.Red.copy(alpha = 0.7f),
+                        modifier = Modifier.clickable { onBackArrowClicked() })
+                }
                 Text(
                     text = title,
                     color = Color.Red.copy(alpha = 0.7f),
@@ -164,7 +174,7 @@ fun ReaderAppBar(
         actions = {
             IconButton(onClick = {
                 FirebaseAuth.getInstance().signOut().run {
-                    onNavigateToLoginScreen()
+                    onNavigateToScreen()
                 }
             }) {
                 Icon(

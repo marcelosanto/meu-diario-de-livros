@@ -27,7 +27,7 @@ fun ReaderBookHomeScreen(
     onNavigateToReaderStatsScreen: () -> Unit
 ) {
     Scaffold(topBar = {
-        ReaderAppBar(title = "A.Reader", onNavigateToLoginScreen = onNavigateToLoginScreen)
+        ReaderAppBar(title = "A.Reader", onNavigateToScreen = onNavigateToLoginScreen)
     }, floatingActionButton = {
         FABContent {}
     }) {
@@ -72,7 +72,6 @@ fun HomeContent(onNavigateToReaderStatsScreen: () -> Unit) {
         )
     )
 
-
     Column(Modifier.padding(2.dp), verticalArrangement = Arrangement.Top) {
         Row(Modifier.align(alignment = Alignment.Start)) {
             TitleSection(label = "Your reading \n " + " activity right now...")
@@ -100,7 +99,6 @@ fun HomeContent(onNavigateToReaderStatsScreen: () -> Unit) {
                 Divider()
             }
         }
-
         ReadingRightNowArea(books = listOfBooks, onNavigateToReaderStatsScreen)
     }
 }
